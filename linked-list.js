@@ -168,18 +168,29 @@ class LinkedList {
     let counter = 0;
     let currNode = this.head;
 
-    while (counter < this.length) {
-      console.log("next: ", currNode.next.val);
+    while (counter < this.length - 1) {
       let currHead = this.head;
 
-      //remove next
-      let currHeadNext = this.head.next;
+      //store temp values
       let newHead = currNode.next;
+
+      //remap
       currHead.next = newHead.next;
       this.head = newHead;
-      this.head.next = currHeadNext;
+      this.head.next = currHead;
 
       counter++;
+    }
+    this.tail = currNode;
+  }
+
+  read() {
+    let currNode = this.head;
+
+    while (currNode !== null) {
+      console.log(currNode.val);
+
+      currNode = currNode.next;
     }
   }
 }
